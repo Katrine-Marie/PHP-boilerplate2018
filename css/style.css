@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {font-size:62.5%;}
+
+body {
+	font-family:'Open Sans', 'Helvetica', 'Arial', sans-serif;
+	font-size:2rem;
+}
+
+* {box-sizing:border-box;}
+img {max-width:100%;}
+
+.main {
+	padding:20px;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+	padding:2rem 0 1rem 0;
+}
+
+h1 {font-size:4rem;}
+h2 {font-size:3.6rem;}
+h3 {font-size:3.2rem;}
+h4 {font-size:2.8rem;}
+h5 {font-size:2.6rem;font-style:italic;}
+h6 {font-size:2.4rem;font-style:italic;}
+
+p, li {
+	line-height:1.6;
+}
