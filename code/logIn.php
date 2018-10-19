@@ -32,26 +32,19 @@
 					$_SESSION['username'] = $username;
 					$_SESSION['name'] = $name;
 
-					if($role == 2){
-						$sql = "SELECT * FROM retailer WHERE admins_id = {$id}";
-						$result = $objConnection->query($sql);
-						while($row = $result->fetch_object()){
-							$_SESSION['retailor'] = $row->id;
-						}
-					}
-					header("Location: ../admin/index.php");
+					header("Location: ../admin/home");
 				}else {
-					header("Location: ../$page&status=err3");
+					header("Location: ../$page/?status=err3");
 				}
 			}else {
-				header("Location: ../$page&status=err3");
+				header("Location: ../$page/?status=err3");
 			}
 
 		} else {
-			// Der mangler brugernavn eller password!
-			header("Location: ../$page&status=err2");
+			// Missing username or password
+			header("Location: ../$page/?status=err2");
 		}
 	} else {
-		// Hvis man forsøger at køre scriptet uden at udfylde formen
-		header("Location: ../$page&status=err1");
+		// If script attempted run without filling out form
+		header("Location: ../$page/?status=err1");
 	}
