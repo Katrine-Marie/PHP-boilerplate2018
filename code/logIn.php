@@ -6,7 +6,7 @@
 	}
 	spl_autoload_register('autoLoader');
 
-	$page = '/home';
+	$page = '/login';
 
 	if(isset($_POST['submit'])){
 
@@ -14,10 +14,10 @@
 
       $dbCon = new DbCon();
 
-			$username = $dbCon->real_escape_string($_POST['username']);
-			$password = $dbCon->real_escape_string($_POST['password']);
+			$username = $dbCon->escape($_POST['username']);
+			$password = $dbCon->escape($_POST['password']);
 
-			$sql = "SELECT * FROM admins WHERE username = '{$username}'";
+			$sql = "SELECT * FROM test_admins WHERE username = '{$username}'";
 			$result = $dbCon->query($sql);
 			if($result->num_rows == 1){
 				while($row = $result->fetch_object()) {
@@ -32,7 +32,7 @@
 					$_SESSION['username'] = $username;
 					$_SESSION['name'] = $name;
 
-					header("Location: ../admin/home");
+					header("Location: ../a-panel/home");
 				}else {
 					header("Location: ../$page/?status=err3");
 				}

@@ -1,6 +1,4 @@
 <?php
-require_once 'Config.php';
-include 'Admin.php';
 
 class DbCon{
 
@@ -33,5 +31,9 @@ class DbCon{
     public function query($sql){
         return $this->ObjConnection->query($sql);
     }
+
+    public function escape($val){
+			return $this->ObjConnection->real_escape_string($val);
+		}
 
 }
