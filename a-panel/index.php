@@ -1,13 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Control Panel</title>
-</head>
-<body>
-  <h1>Control Panel</h1>
-  <a href="../code/logOut.php">Log Out</a>
-</body>
-</html>
+<?php
+	session_start();
+
+	if(!isset($_SESSION['id'])){
+		header("Location: ../");
+	}
+
+//   if(!isset($_SERVER['HTTPS'])){
+// 		header('Location: https://' . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI']);
+// 	}
+
+	require_once('../code/mainFnc.php');
+
+	function autoLoader($class){
+		require_once("../classes/" . strtolower($class) . ".php");
+	}
+	spl_autoload_register('autoLoader');
+
+	if(Config::useLocal){
+		ini_set('display_errors', 1);
+		error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
+	}
+
+	// Include the header template
+  require_once('includes/header.php');
+
+  $uri = explode("/", $_SERVER['REQUEST_URI']);
+
+  if(isset($uri[5]) && !empty($uri[5])){
+    if(file_exists($pagesFolderPath . $uri[5] . '.php')){
+    	include($pagesFolderPath . $uri[5] . '.php');
+    }
+    else{
+    	include($pagesFolderPath . '404.php');
+    }
+  }else {
+    include($pagesFolderPath . 'home.php');
+  }
+
+  // Include the footer template
+  require_once('includes/footer.php');
