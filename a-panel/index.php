@@ -26,9 +26,9 @@
 
   $uri = explode("/", $_SERVER['REQUEST_URI']);
 
-  if(isset($uri[5]) && !empty($uri[5])){
-    if(file_exists($pagesFolderPath . $uri[5] . '.php')){
-    	include($pagesFolderPath . $uri[5] . '.php');
+  if(isset($uri[5]) && !empty($uri[2])){
+    if(file_exists($pagesFolderPath . $uri[2] . '.php')){
+    	include($pagesFolderPath . $uri[2] . '.php');
     }
     else{
     	include($pagesFolderPath . '404.php');
