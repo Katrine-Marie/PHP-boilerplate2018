@@ -2,7 +2,7 @@
 
 Boilerplate code for smaller PHP projects. 2018 version.
 
-Page templates go in the `/pages` folder, include-files such as header, footer or reusable widgets go in the `/includes` folder, and functionality code goes in the `/code` folder. OOP classes go in the `/classes` folder. Autoloader enabled.
+Page templates go in the `/pages` folder, include-files such as header, footer or reusable widgets go in the `/includes` folder, and functionality code goes in the `/code` folder. OOP classes go in the `/classes` folder. Classes are autoloaded.
 
 ## How To Use
 Drop into the root of the project folder.
